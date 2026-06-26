@@ -212,4 +212,6 @@ distinctions — especially the "replacing existing" vs. "adding new" contrast.
             gr.Markdown(TIER_GUIDE_CONTENT)
 
 if __name__ == "__main__":
-    demo.launch(theme=THEME, css=CSS)
+    demo.launch(theme=THEME, css=CSS, share = True)
+    
+

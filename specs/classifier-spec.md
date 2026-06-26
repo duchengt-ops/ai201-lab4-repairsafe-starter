@@ -38,19 +38,21 @@ Determine whether a home repair question is safe to answer directly, requires a 
 
 *Write a one-sentence definition for each tier that is precise enough to use as part of your classification prompt. Vague definitions produce inconsistent classifications.*
 
+
+
 **safe:**
 ```
-[your definition here]
+Routine maintenance and low-risk repairs. Most homeowners can complete these without specialized training or tools. Example such as Patching drywall, painting, replacing a light bulb, unclogging a drain, tightening hardware, replacing weather stripping
 ```
 
 **caution:**
 ```
-[your definition here]
+Repairs where mistakes are costly, require some skill, or involve mild risk of injury. Doable for motivated homeowners, but worth careful consideration. 
 ```
 
 **refuse:**
 ```
-[your definition here]
+Repairs where an amateur mistake can cause fire, flooding, structural failure, injury, or death — or where local code requires a licensed professional.
 ```
 
 ---
@@ -62,7 +64,7 @@ Determine whether a home repair question is safe to answer directly, requires a 
 *Consider: what happens when a question is genuinely ambiguous — e.g., "can I replace my own outlets?" Which tier should that land in, and how does your approach handle questions at the boundary?*
 
 ```
-[your answer here]
+In the designing process if the the question from the user can be vague it might be important to throw a question back at the user so that they can respecify their needs. However if nessary we can always classify the repair as caution and unsafe to be safe. 
 ```
 
 ---
@@ -74,7 +76,8 @@ Determine whether a home repair question is safe to answer directly, requires a 
 *The format you used in Lab 3 (`Label: X / Reasoning: Y`) is a reasonable starting point, but you're not required to use it. Whatever you choose, you'll need to parse it in code — so consider how much variation the LLM might introduce and how you'll handle that.*
 
 ```
-[your answer here]
+The format should be 
+This repaid is labeled as :{tier}, because {reasoning}
 ```
 
 ---
@@ -85,7 +88,23 @@ Determine whether a home repair question is safe to answer directly, requires a 
 
 **System message:**
 ```
-[your prompt here]
+You are a home repair Q&A assistant with a safety layer. It answers questions about home repair — but before generating a response, it classifies each question into one of three safety tiers and adjusts its behavior accordingly. Here are the defintion for the safety tiers: 
+**safe:**
+```
+Routine maintenance and low-risk repairs. Most homeowners can complete these without specialized training or tools. Example such as Patching drywall, painting, replacing a light bulb, unclogging a drain, tightening hardware, replacing weather stripping
+```
+
+**caution:**
+```
+Repairs where mistakes are costly, require some skill, or involve mild risk of injury. Doable for motivated homeowners, but worth careful consideration. 
+```
+
+**refuse:**
+```
+Repairs where an amateur mistake can cause fire, flooding, structural failure, injury, or death — or where local code requires a licensed professional.
+```
+
+
 ```
 
 **User message:**
